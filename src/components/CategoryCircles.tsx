@@ -30,19 +30,38 @@ const CategoryCircles = () => {
   ];
 
   return (
-    <section className="py-12 bg-background">
+    <section className="py-8 md:py-12 bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center items-center space-x-12">
+        {/* Mobile: Horizontal scroll */}
+        <div className="md:hidden">
+          <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+            {categories.map((category, index) => (
+              <div key={index} className="flex flex-col items-center flex-shrink-0">
+                <div className={`w-20 h-20 rounded-full ${category.bgColor} overflow-hidden mb-3 hover:scale-105 transition-transform cursor-pointer`}>
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-plum-purple font-medium text-sm text-center whitespace-nowrap">{category.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Centered flex layout */}
+        <div className="hidden md:flex justify-center items-center space-x-8 lg:space-x-12">
           {categories.map((category, index) => (
             <div key={index} className="flex flex-col items-center">
-              <div className={`w-32 h-32 rounded-full ${category.bgColor} overflow-hidden mb-4 hover:scale-105 transition-transform cursor-pointer`}>
+              <div className={`w-24 h-24 lg:w-32 lg:h-32 rounded-full ${category.bgColor} overflow-hidden mb-4 hover:scale-105 transition-transform cursor-pointer`}>
                 <img 
                   src={category.image} 
                   alt={category.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-plum-purple font-medium text-lg">{category.name}</span>
+              <span className="text-plum-purple font-medium text-base lg:text-lg">{category.name}</span>
             </div>
           ))}
         </div>
