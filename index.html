@@ -16,11 +16,12 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://cgahzcwiqcblmkwblqaj.supabase.co/storage/v1/object/public/cellular-text-pdf/autosite%20whitelogo.webp" />
     <style>
+  /* Floating Button */
   #chatbot-toggle {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #5c108a ;
+    background: rgb(87, 32, 120);
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -53,8 +54,9 @@
     z-index: 9998;
     transition: all 0.4s ease-in-out;
 
-    /* Cropped sides & bottom */ 
-    clip-path: inset(10px 5.5px 13.5px 5.5px round 16px);
+    /* REMOVED clip-path that was cutting off the footer */
+    /* upper ,  ,  , .*/
+    clip-path: inset(9px 5.5px 9px 5.5px round 16px);
   }
 
   /* Open State */
@@ -67,10 +69,24 @@
   /* Mobile Responsive */
   @media (max-width: 768px) {
     #chatbot-frame {
-      width: 90%;
-      height: 80%;
-      right: 5%;
+      width: 89%;
+      height: 80vh; /* Increased height slightly to ensure footer is visible */
+      right: 7.5%;
       bottom: 80px;
+      max-height: 610px;
+      border-radius: 16px;
+    }
+
+    #chatbot-toggle {
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+    }
+
+    #chatbot-toggle img {
+      width: 25px;
+      height: 25px;
     }
   }
 </style>
@@ -85,8 +101,7 @@
 </div>
 
 <!-- Chatbot Iframe -->
-<iframe id="chatbot-frame" src="https://plum-chatbot.vercel.app/" allow="microphone; camera; autoplay; clipboard-read; clipboard-write"
-></iframe>
+<iframe id="chatbot-frame" src="https://plum-chatbot.vercel.app/" allow="microphone; camera; autoplay; clipboard-read; clipboard-write"></iframe>
 
 <script>
   const toggleBtn = document.getElementById("chatbot-toggle");
@@ -105,11 +120,12 @@
     } else {
       chatbotFrame.classList.remove("open");
       chatbotIcon.src =
-        "https://cgahzcwiqcblmkwblqaj.supabase.co/storage/v1/object/public/cellular-text-pdf/autosite%20whitelogo.webp"; // chat icon
+        "https://cgahzcwiqcblmkwblqaj.supabase.co/storage/v1/object/public/cellular-text-pdf/AutoSite%20black%20logo.png"; // chat icon
     }
   });
+</script>});
 </script>
-
+ 
 
   </head>
 
